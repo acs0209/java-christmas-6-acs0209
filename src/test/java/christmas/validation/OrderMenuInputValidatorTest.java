@@ -2,6 +2,7 @@ package christmas.validation;
 
 import static christmas.validation.constant.OrderMenuInputConstant.INVALID_ORDER;
 import static christmas.validation.constant.OrderMenuInputConstant.INVALID_TOTAL_QUANTITY;
+import static christmas.validation.constant.OrderMenuInputConstant.ONLY_BEVERAGE_ORDER;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -120,6 +121,32 @@ class OrderMenuInputValidatorTest {
             OrderMenuInputValidator inputValidation = new OrderMenuInputValidator();
 
             assertThatCode(() -> inputValidation.validateTotalMenuQuantity(input))
+                    .doesNotThrowAnyException();
+        }
+    }
+
+    @Nested
+    @DisplayName("음료만 주문 했는지 검증한다.")
+    class testValidateOrder {
+
+        @ParameterizedTest
+        @ValueSource(strings = {"제로콜라-2,레드와인-3,샴페인-5", "샴페인-5", "제로콜라-2,레드와인-3"})
+        @DisplayName("음료만 주문 했을 경우 예외가 발생하는 테스트")
+        void testBeverageOnlyOrderException(String input) {
+            OrderMenuInputValidator inputValidation = new OrderMenuInputValidator();
+
+            assertThatThrownBy(() -> inputValidation.validateOrder(input))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(ONLY_BEVERAGE_ORDER.getMessage());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"티본스테이크-6,바비큐립-4,레드와인-5,시저샐러드-5", "레드와인-5,시저샐러드-5"})
+        @DisplayName("음료만 주문 하지 않았을 경우 예외가 발생하지 않는 테스트")
+        void testValidOrderNoException(String input) {
+            OrderMenuInputValidator inputValidation = new OrderMenuInputValidator();
+
+            assertThatCode(() -> inputValidation.validateOrder(input))
                     .doesNotThrowAnyException();
         }
     }
