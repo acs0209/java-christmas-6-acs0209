@@ -2,11 +2,11 @@ package christmas.controller;
 
 import christmas.domain.model.Menus;
 
-public class ChristmasMainController {
+public class EventPlannerController {
 
     private final MenuController menuController;
 
-    public ChristmasMainController() {
+    public EventPlannerController() {
         this.menuController = new MenuController();
     }
 
