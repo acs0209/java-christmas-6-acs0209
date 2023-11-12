@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Parser {
 
-    private static final String COMMA_DELIMITER = ",";
-    private static final String HYPHEN_DELIMITER = "-";
+    public static final String COMMA_DELIMITER = ",";
+    public static final String HYPHEN_DELIMITER = "-";
 
     private Parser() {
     }

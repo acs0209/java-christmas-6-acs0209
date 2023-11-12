@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.model.Menus;
+import christmas.domain.model.User;
 
 public class EventPlannerController {
 
@@ -14,6 +15,6 @@ public class EventPlannerController {
 
     public void run() {
         Menus menus = menuController.initMenus();
-        userController.getUser(menus);
+        User user = userController.getUser(menus);
     }
 }
