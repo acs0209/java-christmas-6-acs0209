@@ -45,7 +45,8 @@ public class OutputView {
         DecimalFormat seperatedFormat = SEPARATOR_FORMAT.getFormat();
         String decimalTypeFormattedOrderAmount = seperatedFormat.format(originalOrderAmount.getOrderAmount());
         originalOrderResult.append(
-                String.format(PRE_DISCOUNT_ORDER.getMessage(), decimalTypeFormattedOrderAmount));
+                String.format(PRE_DISCOUNT_ORDER.getMessage(), decimalTypeFormattedOrderAmount))
+                .append("\n");
     }
 
     public void printNoEventResult(int originalOrderAmount) {
