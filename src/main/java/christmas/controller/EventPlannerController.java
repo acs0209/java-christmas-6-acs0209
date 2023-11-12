@@ -25,9 +25,14 @@ public class EventPlannerController {
         printOrderMenu(user);
 
         OriginalOrderAmount originalOrderAmount = originalOrderController.getOriginalOrderAmount(menus, user);
+        printOriginalOrderAmount(originalOrderAmount);
     }
 
     private void printOrderMenu(User user) {
         outputView.printOrderMenu(user);
+    }
+
+    private void printOriginalOrderAmount(OriginalOrderAmount originalOrderAmount) {
+        outputView.printOriginalOrderAmount(originalOrderAmount);
     }
 }
