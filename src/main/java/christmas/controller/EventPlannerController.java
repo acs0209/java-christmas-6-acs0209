@@ -26,6 +26,7 @@ public class EventPlannerController {
 
         OriginalOrderAmount originalOrderAmount = originalOrderController.getOriginalOrderAmount(menus, user);
         printOriginalOrderAmount(originalOrderAmount);
+        isEventApplicableAmount(originalOrderAmount.getOrderAmount());
     }
 
     private void printOrderMenu(User user) {
@@ -34,5 +35,12 @@ public class EventPlannerController {
 
     private void printOriginalOrderAmount(OriginalOrderAmount originalOrderAmount) {
         outputView.printOriginalOrderAmount(originalOrderAmount);
+    }
+
+    private void isEventApplicableAmount(int originalOrderAmount) {
+        if (originalOrderAmount < 10000) {
+            outputView.printNoEventResult(originalOrderAmount);
+            return;
+        }
     }
 }
