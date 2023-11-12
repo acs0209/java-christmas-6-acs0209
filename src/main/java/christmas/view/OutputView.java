@@ -1,5 +1,10 @@
 package christmas.view;
 
+import static christmas.view.constant.NoEventResultConstant.BENEFIT_DETAILS;
+import static christmas.view.constant.NoEventResultConstant.DECEMBER_EVENT_BADGE;
+import static christmas.view.constant.NoEventResultConstant.EXPECTED_PAYMENT_AFTER_DISCOUNT;
+import static christmas.view.constant.NoEventResultConstant.GIFT_MENU;
+import static christmas.view.constant.NoEventResultConstant.TOTAL_BENEFIT_AMOUNT;
 import static christmas.view.constant.OutputConstant.ORDER_MENU;
 import static christmas.view.constant.OutputConstant.ORDER_START;
 import static christmas.view.constant.OutputConstant.PREVIEW_EVENT_BENEFITS;
@@ -41,5 +46,21 @@ public class OutputView {
         String decimalTypeFormattedOrderAmount = seperatedFormat.format(originalOrderAmount.getOrderAmount());
         originalOrderResult.append(
                 String.format(PRE_DISCOUNT_ORDER.getMessage(), decimalTypeFormattedOrderAmount));
+    }
+
+    public void printNoEventResult(int originalOrderAmount) {
+        StringBuilder noEventResult = new StringBuilder();
+        DecimalFormat seperatedFormat = SEPARATOR_FORMAT.getFormat();
+        String decimalTypeFormattedOrderAmount = seperatedFormat.format(originalOrderAmount);
+        createNoEventResult(noEventResult, decimalTypeFormattedOrderAmount);
+        System.out.println(noEventResult);
+    }
+
+    private void createNoEventResult(StringBuilder noEventResult, String decimalTypeFormattedOrderAmount) {
+        noEventResult.append(GIFT_MENU.getMessage())
+                .append(BENEFIT_DETAILS.getMessage())
+                .append(TOTAL_BENEFIT_AMOUNT.getMessage())
+                .append(String.format(EXPECTED_PAYMENT_AFTER_DISCOUNT.getMessage(), decimalTypeFormattedOrderAmount))
+                .append(DECEMBER_EVENT_BADGE.getMessage());
     }
 }
