@@ -11,16 +11,16 @@ class UserTest {
     @Test
     @DisplayName("User 객체가 정상적으로 생성이 됐는지 테스트")
     void testCreationUser() {
-        String menuCount = "7";
+        String visitDate = "7";
         String menu = "해산물파스타-2,레드와인-1,초코케이크-1";
 
-        User user = User.create(menuCount, menu);
+        User user = User.create(visitDate, menu);
 
         assertAll(
                 () -> assertThat(user.getOrderMenu().get("해산물파스타")).isEqualTo(2),
                 () -> assertThat(user.getOrderMenu().get("레드와인")).isEqualTo(1),
                 () -> assertThat(user.getOrderMenu().get("초코케이크")).isEqualTo(1),
-                () -> assertThat(user.getMenuCount().getCount()).isEqualTo(7)
+                () -> assertThat(user.getVisitDate().getDate()).isEqualTo(7)
         );
     }
 }
