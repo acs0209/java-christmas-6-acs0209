@@ -3,17 +3,17 @@ package christmas.domain.dto;
 import christmas.domain.model.Menus;
 import christmas.domain.model.User;
 
-public class EventMainDto {
+public class EventPlanDto {
     private final Menus menus;
     private final User user;
 
-    private EventMainDto(Menus menus, User user) {
+    private EventPlanDto(Menus menus, User user) {
         this.menus = menus;
         this.user = user;
     }
 
-    public static EventMainDto create(Menus menus, User user) {
-        return new EventMainDto(menus, user);
+    public static EventPlanDto create(Menus menus, User user) {
+        return new EventPlanDto(menus, user);
     }
 
     public Menus getMenus() {

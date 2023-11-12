@@ -1,7 +1,7 @@
 package christmas.controller;
 
 import christmas.controller.event.EventMainController;
-import christmas.domain.dto.EventMainDto;
+import christmas.domain.dto.EventPlanDto;
 import christmas.domain.model.Menus;
 import christmas.domain.model.OriginalOrderAmount;
 import christmas.domain.model.User;
@@ -31,8 +31,8 @@ public class EventPlannerController {
         OriginalOrderAmount originalOrderAmount = originalOrderController.getOriginalOrderAmount(menus, user);
         printOriginalOrderAmount(originalOrderAmount);
 
-        EventMainDto eventMainDto = EventMainDto.create(menus, user);
-        isEventApplicableAmount(originalOrderAmount, eventMainDto);
+        EventPlanDto eventPlanDto = EventPlanDto.create(menus, user);
+        isEventApplicableAmount(originalOrderAmount, eventPlanDto);
     }
 
     private void printOrderMenu(User user) {
@@ -43,12 +43,12 @@ public class EventPlannerController {
         outputView.printOriginalOrderAmount(originalOrderAmount);
     }
 
-    private void isEventApplicableAmount(OriginalOrderAmount originalOrderAmount, EventMainDto eventMainDto) {
+    private void isEventApplicableAmount(OriginalOrderAmount originalOrderAmount, EventPlanDto eventPlanDto) {
         if (originalOrderAmount.getOrderAmount() < 10000) {
             outputView.printNoEventResult(originalOrderAmount.getOrderAmount());
             return;
         }
 
-        eventMainController.run(originalOrderAmount, eventMainDto);
+        eventMainController.run(originalOrderAmount, eventPlanDto);
     }
 }
