@@ -52,7 +52,8 @@ class OrderMenuInputValidatorTest {
     class testValidateMenuDuplication {
 
         @ParameterizedTest
-        @ValueSource(strings = {"티본스테이크-1,바비큐립-1,바비큐립-1"})
+        @ValueSource(strings = {"티본스테이크-1,바비큐립-1,바비큐립-1", "바비큐립-2,바비큐립-1,바비큐립-3",
+                "티본스테이크-1,티본스테이크-9", "레드와인-4,레드와인-1,바비큐립-1"})
         @DisplayName("중복 메뉴를 입력한 경우 예외가 발생해야 하는 테스트")
         void testInvalidDuplicateMenuException(String input) {
             OrderMenuInputValidator inputValidation = new OrderMenuInputValidator();

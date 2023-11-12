@@ -6,6 +6,7 @@ import static christmas.validation.constant.OrderMenuInputConstant.INVALID_TOTAL
 import static christmas.validation.constant.OrderMenuInputConstant.ONLY_BEVERAGE_ORDER;
 
 import christmas.util.Parser;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -27,8 +28,11 @@ public class OrderMenuInputValidator {
 
     public void validateMenuDuplication(String input) {
         List<String> menus = Parser.stringToList(input);
-        Set<String> distinctMenus = new HashSet<>(menus);
-        if (distinctMenus.size() < menus.size()) {
+        List<String> menuNames = new ArrayList<>();
+        Parser.extractMenuNamesFromMenus(menus, menuNames);
+
+        Set<String> distinctMenuNames = new HashSet<>(menuNames);
+        if (distinctMenuNames.size() < menuNames.size()) {
             throw new IllegalArgumentException(INVALID_ORDER.getMessage());
         }
     }
