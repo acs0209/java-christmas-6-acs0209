@@ -41,15 +41,14 @@ public class OrderMenuInputValidator {
         List<String> menus = Parser.stringToList(input);
         menus.stream()
                 .map(menuItem -> menuItem.split(DELIMITER.getMessage()))
-                .allMatch(menu -> menu.length == 2 && isValidQuantity(menu[1]));
+                .forEach(menu -> isValidQuantity(menu[1]));
     }
 
-    private boolean isValidQuantity(String quantity) {
+    private void isValidQuantity(String quantity) {
         int menuQuantity = Integer.parseInt(quantity);
         if (menuQuantity < 1) {
             throw new IllegalArgumentException(INVALID_ORDER.getMessage());
         }
-        return true;
     }
 
     public void validateTotalMenuQuantity(String input) {
