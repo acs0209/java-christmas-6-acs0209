@@ -13,13 +13,14 @@ public class EventMainController {
     private final GiftMenuController giftMenuController;
 
     public EventMainController() {
-        eventOutputView = new EventOutputView();
-        giftMenuController = new GiftMenuController();
+        this.eventOutputView = new EventOutputView();
+        this.giftMenuController = new GiftMenuController();
     }
 
     public void run(OriginalOrderAmount originalOrderAmount, EventMainDto eventMainDto) {
         GiftMenu giftMenu = giftMenuController.getGiftMenu(originalOrderAmount.getOrderAmount());
         printGiftMenu(giftMenu);
+
     }
 
     private void printGiftMenu(GiftMenu giftMenu) {

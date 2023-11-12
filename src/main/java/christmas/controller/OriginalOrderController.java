@@ -10,7 +10,7 @@ public class OriginalOrderController {
     private final OriginalOrderService originalOrderService;
 
     public OriginalOrderController() {
-        originalOrderService = new OriginalOrderService();
+        this.originalOrderService = new OriginalOrderService();
     }
 
     public OriginalOrderAmount getOriginalOrderAmount(Menus menus, User user) {
