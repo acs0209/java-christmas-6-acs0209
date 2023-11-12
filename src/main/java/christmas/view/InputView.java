@@ -21,7 +21,7 @@ public class InputView {
     public String readDate() {
         while (true) {
             try {
-                String input = Console.readLine();
+                String input = Console.readLine().trim();
                 commonErrorValidator.validateCommonError(input);
                 visitDateInputValidator.validateInputDate(input);
                 return input;
@@ -34,7 +34,7 @@ public class InputView {
     public String readMenu(Menus menus) {
         while (true) {
             try {
-                String input = Console.readLine();
+                String input = Console.readLine().trim();
                 commonErrorValidator.validateCommonError(input);
                 orderMenuInputValidator.validateMenuInput(input);
                 menus.validateMenuExist(input);
