@@ -1,10 +1,10 @@
 package christmas.controller.event;
 
-import static christmas.view.constant.EventConstant.BENEFIT_DETAILS;
-import static christmas.view.constant.EventConstant.DECEMBER_EVENT_BADGE;
-import static christmas.view.constant.EventConstant.EXPECTED_PAYMENT_AFTER_DISCOUNT;
-import static christmas.view.constant.EventConstant.GIFT_MENU;
-import static christmas.view.constant.EventConstant.TOTAL_BENEFIT_AMOUNT;
+import static christmas.view.constant.EventOutputConstant.BENEFIT_DETAILS;
+import static christmas.view.constant.EventOutputConstant.DECEMBER_EVENT_BADGE;
+import static christmas.view.constant.EventOutputConstant.EXPECTED_PAYMENT_AFTER_DISCOUNT;
+import static christmas.view.constant.EventOutputConstant.GIFT_MENU;
+import static christmas.view.constant.EventOutputConstant.TOTAL_BENEFIT_AMOUNT;
 
 import christmas.domain.dto.EventPlanDto;
 import christmas.domain.model.OriginalOrderAmount;

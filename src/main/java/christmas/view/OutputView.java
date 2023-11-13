@@ -48,7 +48,7 @@ public class OutputView {
         String decimalTypeFormattedOrderAmount = seperatedFormat.format(originalOrderAmount.getOrderAmount());
         originalOrderResult.append(String.format(PRE_DISCOUNT_ORDER.getMessage(), decimalTypeFormattedOrderAmount))
                 .append(WON.getMessage())
-                .append("\n");
+                .append(NEW_LINE.getMessage());
     }
 
     public void printNoEventResult(int originalOrderAmount) {

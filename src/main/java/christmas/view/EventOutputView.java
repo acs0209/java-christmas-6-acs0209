@@ -1,10 +1,10 @@
 package christmas.view;
 
-import static christmas.view.constant.EventConstant.COLON;
-import static christmas.view.constant.EventConstant.DASH;
-import static christmas.view.constant.EventConstant.NEW_LINE;
-import static christmas.view.constant.EventConstant.NO_EVENT;
-import static christmas.view.constant.EventConstant.WON;
+import static christmas.view.constant.EventOutputConstant.COLON;
+import static christmas.view.constant.EventOutputConstant.DASH;
+import static christmas.view.constant.EventOutputConstant.NEW_LINE;
+import static christmas.view.constant.EventOutputConstant.NO_EVENT;
+import static christmas.view.constant.EventOutputConstant.WON;
 import static christmas.view.constant.PrintFormat.SEPARATOR_FORMAT;
 
 import christmas.domain.model.event.BenefitDetails;
@@ -71,8 +71,7 @@ public class EventOutputView {
     private void createTotalBenefitAmountResult(StringBuilder totalBenefitAmountResult, int totalBenefitAmount) {
         DecimalFormat seperatedFormat = SEPARATOR_FORMAT.getFormat();
         if (totalBenefitAmount == 0) {
-            totalBenefitAmountResult.append(seperatedFormat.format(totalBenefitAmount))
-                    .append(WON.getMessage())
+            totalBenefitAmountResult.append(seperatedFormat.format(totalBenefitAmount)).append(WON.getMessage())
                     .append(NEW_LINE.getMessage());
             return;
         }

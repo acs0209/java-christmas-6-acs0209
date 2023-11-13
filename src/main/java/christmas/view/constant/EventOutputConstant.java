@@ -1,6 +1,6 @@
 package christmas.view.constant;
 
-public enum EventConstant {
+public enum EventOutputConstant {
 
     GIFT_MENU("<증정 메뉴>"),
     BENEFIT_DETAILS("<혜택 내역>"),
@@ -11,11 +11,11 @@ public enum EventConstant {
     COLON(": "),
     DASH("-"),
     WON("원"),
-    NEW_LINE("\n");
+    NEW_LINE("\r\n");
 
     private final String message;
 
-    EventConstant(String message) {
+    EventOutputConstant(String message) {
         this.message = message;
     }
 
