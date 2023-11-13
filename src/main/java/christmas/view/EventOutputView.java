@@ -1,10 +1,10 @@
 package christmas.view;
 
-import static christmas.view.constant.EventOutputConstant.COLON;
-import static christmas.view.constant.EventOutputConstant.DASH;
-import static christmas.view.constant.EventOutputConstant.NEW_LINE;
+import static christmas.view.constant.OutputConstant.COLON;
+import static christmas.view.constant.OutputConstant.DASH;
+import static christmas.view.constant.OutputConstant.NEW_LINE;
+import static christmas.view.constant.OutputConstant.WON;
 import static christmas.view.constant.EventOutputConstant.NO_EVENT;
-import static christmas.view.constant.EventOutputConstant.WON;
 import static christmas.view.constant.PrintFormat.SEPARATOR_FORMAT;
 
 import christmas.domain.model.event.BenefitDetails;

@@ -7,11 +7,7 @@ public enum EventOutputConstant {
     TOTAL_BENEFIT_AMOUNT("<총혜택 금액>"),
     EXPECTED_PAYMENT_AFTER_DISCOUNT("<할인 후 예상 결제 금액>"),
     DECEMBER_EVENT_BADGE("<12월 이벤트 배지>"),
-    NO_EVENT("없음"),
-    COLON(": "),
-    DASH("-"),
-    WON("원"),
-    NEW_LINE("\r\n");
+    NO_EVENT("없음");
 
     private final String message;
 

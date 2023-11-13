@@ -4,13 +4,13 @@ import static christmas.view.constant.NoEventOutputConstant.BENEFIT_DETAILS;
 import static christmas.view.constant.NoEventOutputConstant.DECEMBER_EVENT_BADGE;
 import static christmas.view.constant.NoEventOutputConstant.EXPECTED_PAYMENT_AFTER_DISCOUNT;
 import static christmas.view.constant.NoEventOutputConstant.GIFT_MENU;
-import static christmas.view.constant.NoEventOutputConstant.NEW_LINE;
 import static christmas.view.constant.NoEventOutputConstant.TOTAL_BENEFIT_AMOUNT;
 import static christmas.view.constant.OutputConstant.ORDER_MENU;
 import static christmas.view.constant.OutputConstant.ORDER_START;
 import static christmas.view.constant.OutputConstant.PREVIEW_EVENT_BENEFITS;
 import static christmas.view.constant.OutputConstant.PRE_DISCOUNT_ORDER;
 import static christmas.view.constant.OutputConstant.WON;
+import static christmas.view.constant.OutputConstant.NEW_LINE;
 import static christmas.view.constant.PrintFormat.SEPARATOR_FORMAT;
 
 import christmas.domain.model.OriginalOrderAmount;
@@ -32,9 +32,11 @@ public class OutputView {
 
     private void createOrderMenuResult(StringBuilder orderMenuResult, User user) {
         orderMenuResult.append(String.format(PREVIEW_EVENT_BENEFITS.getMessage(), user.getVisitDate().getDate()))
-                .append(ORDER_START.getMessage());
+                .append(NEW_LINE.getMessage()).append(NEW_LINE.getMessage())
+                .append(ORDER_START.getMessage()).append(NEW_LINE.getMessage());
         Map<String, Integer> orderMenus = user.getOrderMenu();
-        orderMenus.forEach((name, count) -> orderMenuResult.append(String.format(ORDER_MENU.getMessage(), name, count)));
+        orderMenus.forEach((name, count) -> orderMenuResult.append(String.format(ORDER_MENU.getMessage(), name, count))
+                .append(NEW_LINE.getMessage()));
     }
 
     public void printOriginalOrderAmount(OriginalOrderAmount originalOrderAmount) {
