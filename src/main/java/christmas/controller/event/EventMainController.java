@@ -1,6 +1,7 @@
 package christmas.controller.event;
 
 import static christmas.view.constant.EventConstant.BENEFIT_DETAILS;
+import static christmas.view.constant.EventConstant.DECEMBER_EVENT_BADGE;
 import static christmas.view.constant.EventConstant.EXPECTED_PAYMENT_AFTER_DISCOUNT;
 import static christmas.view.constant.EventConstant.GIFT_MENU;
 import static christmas.view.constant.EventConstant.TOTAL_BENEFIT_AMOUNT;
@@ -42,6 +43,7 @@ public class EventMainController {
         printDiscountedOrderAmount(discountedOrderAmount);
 
         EventBadge eventBadge = eventBadgeController.getEventBadge(benefitDetails);
+        printEventBadge(eventBadge);
     }
 
     private void printGiftMenu(GiftMenu giftMenu) {
@@ -62,5 +64,10 @@ public class EventMainController {
     private void printDiscountedOrderAmount(DiscountedOrderAmount discountedOrderAmount) {
         EventOutputView.printMessage(EXPECTED_PAYMENT_AFTER_DISCOUNT.getMessage());
         eventOutputView.printDiscountedOrderAmount(discountedOrderAmount);
+    }
+
+    private void printEventBadge(EventBadge eventBadge) {
+        EventOutputView.printMessage(DECEMBER_EVENT_BADGE.getMessage());
+        eventOutputView.printEventBadge(eventBadge);
     }
 }

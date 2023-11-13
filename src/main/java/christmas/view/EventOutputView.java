@@ -9,6 +9,7 @@ import static christmas.view.constant.PrintFormat.SEPARATOR_FORMAT;
 
 import christmas.domain.model.event.BenefitDetails;
 import christmas.domain.model.event.DiscountedOrderAmount;
+import christmas.domain.model.event.EventBadge;
 import christmas.domain.model.event.GiftMenu;
 import java.text.DecimalFormat;
 import java.util.Map;
@@ -93,5 +94,15 @@ public class EventOutputView {
         discountedOrderAmountResult.append(seperatedFormat.format(discountedOrderAmount.getDiscountedOrderAmount()))
                 .append(WON.getMessage())
                 .append(NEW_LINE.getMessage());
+    }
+
+    public void printEventBadge(EventBadge eventBadge) {
+        StringBuilder eventBadgeResult = new StringBuilder();
+        createEventBadge(eventBadgeResult, eventBadge);
+        System.out.println(eventBadgeResult);
+    }
+
+    private void createEventBadge(StringBuilder eventBadgeResult, EventBadge eventBadge) {
+        eventBadgeResult.append(eventBadge.getEventBadge());
     }
 }
