@@ -7,6 +7,7 @@ import static christmas.view.constant.EventConstant.TOTAL_BENEFIT_AMOUNT;
 import christmas.domain.dto.EventPlanDto;
 import christmas.domain.model.OriginalOrderAmount;
 import christmas.domain.model.event.BenefitDetails;
+import christmas.domain.model.event.DiscountedOrderAmount;
 import christmas.domain.model.event.GiftMenu;
 import christmas.view.EventOutputView;
 
@@ -15,19 +16,25 @@ public class EventMainController {
     private final EventOutputView eventOutputView;
     private final GiftMenuController giftMenuController;
     private final BenefitDetailsController benefitDetailsController;
+    private final DiscountedOrderController discountedOrderController;
 
     public EventMainController() {
         this.eventOutputView = new EventOutputView();
         this.giftMenuController = new GiftMenuController();
         this.benefitDetailsController = new BenefitDetailsController();
+        this.discountedOrderController = new DiscountedOrderController();
     }
 
     public void run(OriginalOrderAmount originalOrderAmount, EventPlanDto eventPlanDto) {
         GiftMenu giftMenu = giftMenuController.getGiftMenu(originalOrderAmount.getOrderAmount());
         printGiftMenu(giftMenu);
+
         BenefitDetails benefitDetails = benefitDetailsController.getBenefitDetails(originalOrderAmount, eventPlanDto);
         printBenefitDetails(benefitDetails);
         printTotalBenefitAmount(benefitDetails.getTotalBenefitAmount());
+
+        DiscountedOrderAmount discountedOrderAmount = discountedOrderController.getDiscountedOrderAmount(
+                originalOrderAmount, benefitDetails);
     }
 
     private void printGiftMenu(GiftMenu giftMenu) {
