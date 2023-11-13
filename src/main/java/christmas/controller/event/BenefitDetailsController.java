@@ -2,6 +2,7 @@ package christmas.controller.event;
 
 import christmas.domain.dto.EventPlanDto;
 import christmas.domain.model.OriginalOrderAmount;
+import christmas.domain.model.event.BenefitDetails;
 import christmas.service.event.BenefitDetailsService;
 
 public class BenefitDetailsController {
@@ -12,7 +13,7 @@ public class BenefitDetailsController {
         this.benefitDetailsService = new BenefitDetailsService();
     }
 
-    public void getBenefitDetails(OriginalOrderAmount originalOrderAmount, EventPlanDto eventPlanDto) {
-        benefitDetailsService.createBenefitDetails(originalOrderAmount, eventPlanDto);
+    public BenefitDetails getBenefitDetails(OriginalOrderAmount originalOrderAmount, EventPlanDto eventPlanDto) {
+        return benefitDetailsService.createBenefitDetails(originalOrderAmount, eventPlanDto);
     }
 }

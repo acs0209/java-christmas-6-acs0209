@@ -1,9 +1,12 @@
 package christmas.controller.event;
 
+import static christmas.view.constant.EventConstant.BENEFIT_DETAILS;
 import static christmas.view.constant.EventConstant.GIFT_MENU;
+import static christmas.view.constant.EventConstant.TOTAL_BENEFIT_AMOUNT;
 
 import christmas.domain.dto.EventPlanDto;
 import christmas.domain.model.OriginalOrderAmount;
+import christmas.domain.model.event.BenefitDetails;
 import christmas.domain.model.event.GiftMenu;
 import christmas.view.EventOutputView;
 
@@ -22,11 +25,23 @@ public class EventMainController {
     public void run(OriginalOrderAmount originalOrderAmount, EventPlanDto eventPlanDto) {
         GiftMenu giftMenu = giftMenuController.getGiftMenu(originalOrderAmount.getOrderAmount());
         printGiftMenu(giftMenu);
-        benefitDetailsController.getBenefitDetails(originalOrderAmount, eventPlanDto);
+        BenefitDetails benefitDetails = benefitDetailsController.getBenefitDetails(originalOrderAmount, eventPlanDto);
+        printBenefitDetails(benefitDetails);
+        printTotalBenefitAmount(benefitDetails.getTotalBenefitAmount());
     }
 
     private void printGiftMenu(GiftMenu giftMenu) {
         EventOutputView.printMessage(GIFT_MENU.getMessage());
         eventOutputView.printGiftMenu(giftMenu);
+    }
+
+    private void printBenefitDetails(BenefitDetails benefitDetails) {
+        EventOutputView.printMessage(BENEFIT_DETAILS.getMessage());
+        eventOutputView.printBenefitDetails(benefitDetails);
+    }
+
+    private void printTotalBenefitAmount(int totalBenefitAmount) {
+        EventOutputView.printMessage(TOTAL_BENEFIT_AMOUNT.getMessage());
+        eventOutputView.printTotalBenefitAmount(totalBenefitAmount);
     }
 }

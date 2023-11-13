@@ -6,9 +6,9 @@ import christmas.domain.model.event.BenefitDetails;
 
 public class BenefitDetailsService {
 
-    public void createBenefitDetails(OriginalOrderAmount originalOrderAmount, EventPlanDto eventPlanDto) {
+    public BenefitDetails createBenefitDetails(OriginalOrderAmount originalOrderAmount, EventPlanDto eventPlanDto) {
         BenefitDetails benefitDetails = BenefitDetails.create();
         benefitDetails.createEventPlan(originalOrderAmount, eventPlanDto);
-
+        return benefitDetails;
     }
 }
