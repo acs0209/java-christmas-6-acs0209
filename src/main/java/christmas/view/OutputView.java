@@ -30,7 +30,7 @@ public class OutputView {
     }
 
     private void createOrderMenuResult(StringBuilder orderMenuResult, User user) {
-        orderMenuResult.append(PREVIEW_EVENT_BENEFITS.getMessage())
+        orderMenuResult.append(String.format(PREVIEW_EVENT_BENEFITS.getMessage(), user.getVisitDate().getDate()))
                 .append(ORDER_START.getMessage());
         Map<String, Integer> orderMenus = user.getOrderMenu();
         orderMenus.forEach((name, count) -> orderMenuResult.append(String.format(ORDER_MENU.getMessage(), name, count)));
