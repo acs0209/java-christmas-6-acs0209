@@ -1,10 +1,11 @@
 package christmas.view;
 
-import static christmas.view.constant.NoEventResultConstant.BENEFIT_DETAILS;
-import static christmas.view.constant.NoEventResultConstant.DECEMBER_EVENT_BADGE;
-import static christmas.view.constant.NoEventResultConstant.EXPECTED_PAYMENT_AFTER_DISCOUNT;
-import static christmas.view.constant.NoEventResultConstant.GIFT_MENU;
-import static christmas.view.constant.NoEventResultConstant.TOTAL_BENEFIT_AMOUNT;
+import static christmas.view.constant.NoEventOutputConstant.BENEFIT_DETAILS;
+import static christmas.view.constant.NoEventOutputConstant.DECEMBER_EVENT_BADGE;
+import static christmas.view.constant.NoEventOutputConstant.EXPECTED_PAYMENT_AFTER_DISCOUNT;
+import static christmas.view.constant.NoEventOutputConstant.GIFT_MENU;
+import static christmas.view.constant.NoEventOutputConstant.NEW_LINE;
+import static christmas.view.constant.NoEventOutputConstant.TOTAL_BENEFIT_AMOUNT;
 import static christmas.view.constant.OutputConstant.ORDER_MENU;
 import static christmas.view.constant.OutputConstant.ORDER_START;
 import static christmas.view.constant.OutputConstant.PREVIEW_EVENT_BENEFITS;
@@ -59,10 +60,11 @@ public class OutputView {
     }
 
     private void createNoEventResult(StringBuilder noEventResult, String decimalTypeFormattedOrderAmount) {
-        noEventResult.append(GIFT_MENU.getMessage())
-                .append(BENEFIT_DETAILS.getMessage())
-                .append(TOTAL_BENEFIT_AMOUNT.getMessage())
+        noEventResult.append(GIFT_MENU.getMessage()).append(NEW_LINE.getMessage()).append(NEW_LINE.getMessage())
+                .append(BENEFIT_DETAILS.getMessage()).append(NEW_LINE.getMessage()).append(NEW_LINE.getMessage())
+                .append(TOTAL_BENEFIT_AMOUNT.getMessage()).append(NEW_LINE.getMessage()).append(NEW_LINE.getMessage())
                 .append(String.format(EXPECTED_PAYMENT_AFTER_DISCOUNT.getMessage(), decimalTypeFormattedOrderAmount))
+                .append(NEW_LINE.getMessage()).append(NEW_LINE.getMessage())
                 .append(DECEMBER_EVENT_BADGE.getMessage());
     }
 }
