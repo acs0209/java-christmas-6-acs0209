@@ -1,5 +1,6 @@
 package christmas.domain.model.event;
 
+import static christmas.domain.constant.event.EventBadgeConstant.NO_EVENT_BADGE;
 import static christmas.domain.constant.event.EventBadgeConstant.SANTA;
 import static christmas.domain.constant.event.EventBadgeConstant.STAR;
 import static christmas.domain.constant.event.EventBadgeConstant.TREE;
@@ -24,7 +25,10 @@ public class EventBadge {
         if (totalBenefitAmount > TREE.getNumber()) {
             return TREE.getMessage();
         }
-        return STAR.getMessage();
+        if (totalBenefitAmount > STAR.getNumber()) {
+            return STAR.getMessage();
+        }
+        return NO_EVENT_BADGE.getMessage();
     }
 
     public String getEventBadge() {

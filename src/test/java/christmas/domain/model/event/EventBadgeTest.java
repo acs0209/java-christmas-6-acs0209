@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 class EventBadgeTest {
 
     @Nested
-    @DisplayName("이벤트 계획 생성 기능 테스트")
-    class TestCreateEventBadge {
+    @DisplayName("이벤트 배지 생성 기능 테스트")
+    class TestCreationEventBadge {
 
         private final Menus menus = Menus.init();
 
@@ -46,6 +46,12 @@ class EventBadgeTest {
         @DisplayName("생성한 이벤트 베지값이 기대값인 별과 같은지 테스트")
         void testEventVeggieValueIsExpectedStar() {
             testCreationEventBadge("28", "해산물파스타-1,초코케이크-2,아이스크림-2", "별");
+        }
+
+        @Test
+        @DisplayName("생성한 이벤트 베지값이 기대값인 없음과 같은지 테스트")
+        void testEventVeggieValueIsExpectedNone() {
+            testCreationEventBadge("29", "양송이수프-3,초코케이크-2,아이스크림-2", "없음");
         }
     }
 }

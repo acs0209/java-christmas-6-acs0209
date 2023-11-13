@@ -3,7 +3,8 @@ package christmas.domain.constant.event;
 public enum EventBadgeConstant {
     STAR("별", 5000),
     TREE("트리", 10000),
-    SANTA("산타", 20000);
+    SANTA("산타", 20000),
+    NO_EVENT_BADGE("없음", 0);
 
     private final String message;
     private final int number;
