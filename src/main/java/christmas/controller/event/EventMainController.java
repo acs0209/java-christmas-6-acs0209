@@ -9,6 +9,7 @@ import christmas.domain.dto.EventPlanDto;
 import christmas.domain.model.OriginalOrderAmount;
 import christmas.domain.model.event.BenefitDetails;
 import christmas.domain.model.event.DiscountedOrderAmount;
+import christmas.domain.model.event.EventBadge;
 import christmas.domain.model.event.GiftMenu;
 import christmas.view.EventOutputView;
 
@@ -18,12 +19,14 @@ public class EventMainController {
     private final GiftMenuController giftMenuController;
     private final BenefitDetailsController benefitDetailsController;
     private final DiscountedOrderController discountedOrderController;
+    private final EventBadgeController eventBadgeController;
 
     public EventMainController() {
         this.eventOutputView = new EventOutputView();
         this.giftMenuController = new GiftMenuController();
         this.benefitDetailsController = new BenefitDetailsController();
         this.discountedOrderController = new DiscountedOrderController();
+        this.eventBadgeController = new EventBadgeController();
     }
 
     public void run(OriginalOrderAmount originalOrderAmount, EventPlanDto eventPlanDto) {
@@ -37,6 +40,8 @@ public class EventMainController {
         DiscountedOrderAmount discountedOrderAmount = discountedOrderController.getDiscountedOrderAmount(
                 originalOrderAmount, benefitDetails);
         printDiscountedOrderAmount(discountedOrderAmount);
+
+        EventBadge eventBadge = eventBadgeController.getEventBadge(benefitDetails);
     }
 
     private void printGiftMenu(GiftMenu giftMenu) {
