@@ -9,6 +9,7 @@ import static christmas.view.constant.OutputConstant.ORDER_MENU;
 import static christmas.view.constant.OutputConstant.ORDER_START;
 import static christmas.view.constant.OutputConstant.PREVIEW_EVENT_BENEFITS;
 import static christmas.view.constant.OutputConstant.PRE_DISCOUNT_ORDER;
+import static christmas.view.constant.OutputConstant.WON;
 import static christmas.view.constant.PrintFormat.SEPARATOR_FORMAT;
 
 import christmas.domain.model.OriginalOrderAmount;
@@ -44,8 +45,8 @@ public class OutputView {
     private void createOriginalOrderResult(StringBuilder originalOrderResult, OriginalOrderAmount originalOrderAmount) {
         DecimalFormat seperatedFormat = SEPARATOR_FORMAT.getFormat();
         String decimalTypeFormattedOrderAmount = seperatedFormat.format(originalOrderAmount.getOrderAmount());
-        originalOrderResult.append(
-                String.format(PRE_DISCOUNT_ORDER.getMessage(), decimalTypeFormattedOrderAmount))
+        originalOrderResult.append(String.format(PRE_DISCOUNT_ORDER.getMessage(), decimalTypeFormattedOrderAmount))
+                .append(WON.getMessage())
                 .append("\n");
     }
 
