@@ -1,6 +1,7 @@
 package christmas.controller.event;
 
 import static christmas.view.constant.EventConstant.BENEFIT_DETAILS;
+import static christmas.view.constant.EventConstant.EXPECTED_PAYMENT_AFTER_DISCOUNT;
 import static christmas.view.constant.EventConstant.GIFT_MENU;
 import static christmas.view.constant.EventConstant.TOTAL_BENEFIT_AMOUNT;
 
@@ -35,6 +36,7 @@ public class EventMainController {
 
         DiscountedOrderAmount discountedOrderAmount = discountedOrderController.getDiscountedOrderAmount(
                 originalOrderAmount, benefitDetails);
+        printDiscountedOrderAmount(discountedOrderAmount);
     }
 
     private void printGiftMenu(GiftMenu giftMenu) {
@@ -50,5 +52,10 @@ public class EventMainController {
     private void printTotalBenefitAmount(int totalBenefitAmount) {
         EventOutputView.printMessage(TOTAL_BENEFIT_AMOUNT.getMessage());
         eventOutputView.printTotalBenefitAmount(totalBenefitAmount);
+    }
+
+    private void printDiscountedOrderAmount(DiscountedOrderAmount discountedOrderAmount) {
+        EventOutputView.printMessage(EXPECTED_PAYMENT_AFTER_DISCOUNT.getMessage());
+        eventOutputView.printDiscountedOrderAmount(discountedOrderAmount);
     }
 }

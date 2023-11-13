@@ -8,6 +8,7 @@ import static christmas.view.constant.EventConstant.WON;
 import static christmas.view.constant.PrintFormat.SEPARATOR_FORMAT;
 
 import christmas.domain.model.event.BenefitDetails;
+import christmas.domain.model.event.DiscountedOrderAmount;
 import christmas.domain.model.event.GiftMenu;
 import java.text.DecimalFormat;
 import java.util.Map;
@@ -69,12 +70,28 @@ public class EventOutputView {
     private void createTotalBenefitAmountResult(StringBuilder totalBenefitAmountResult, int totalBenefitAmount) {
         DecimalFormat seperatedFormat = SEPARATOR_FORMAT.getFormat();
         if (totalBenefitAmount == 0) {
-            totalBenefitAmountResult.append(seperatedFormat.format(totalBenefitAmount)).append(WON.getMessage());
+            totalBenefitAmountResult.append(seperatedFormat.format(totalBenefitAmount))
+                    .append(WON.getMessage())
+                    .append(NEW_LINE.getMessage());
             return;
         }
 
         totalBenefitAmountResult.append(DASH.getMessage())
                 .append(seperatedFormat.format(totalBenefitAmount))
-                .append(WON.getMessage());
+                .append(WON.getMessage())
+                .append(NEW_LINE.getMessage());
+    }
+
+    public void printDiscountedOrderAmount(DiscountedOrderAmount discountedOrderAmount) {
+        StringBuilder discountedOrderAmountResult = new StringBuilder();
+        createDiscountedOrderAmount(discountedOrderAmountResult, discountedOrderAmount);
+        System.out.println(discountedOrderAmountResult);
+    }
+
+    private void createDiscountedOrderAmount(StringBuilder discountedOrderAmountResult, DiscountedOrderAmount discountedOrderAmount) {
+        DecimalFormat seperatedFormat = SEPARATOR_FORMAT.getFormat();
+        discountedOrderAmountResult.append(seperatedFormat.format(discountedOrderAmount.getDiscountedOrderAmount()))
+                .append(WON.getMessage())
+                .append(NEW_LINE.getMessage());
     }
 }
