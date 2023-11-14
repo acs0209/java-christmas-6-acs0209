@@ -44,7 +44,7 @@ public class BenefitDetails {
         return new BenefitDetails();
     }
 
-    public void initBenefitDetails() {
+    private void initBenefitDetails() {
         BenefitDetailsConstant.getEvents(benefitDetails);
     }
 

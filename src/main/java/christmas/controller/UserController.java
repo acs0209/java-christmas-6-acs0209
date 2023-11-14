@@ -26,13 +26,13 @@ public class UserController {
         return userService.createUser(date, menu);
     }
 
-    public String readDate() {
+    private String readDate() {
         OutputView.printMessage(DECEMBER_EVENT_PLANNER.getMessage());
         OutputView.printMessage(GET_VISIT_DATE.getMessage());
         return inputView.readDate();
     }
 
-    public String readMenu(Menus menus) {
+    private String readMenu(Menus menus) {
         OutputView.printMessage(GET_MENU.getMessage());
         return inputView.readMenu(menus);
     }

@@ -32,7 +32,7 @@ public class Menus {
                 .forEach(menu -> isValidMenuExist(menu[0]));
     }
 
-    public void isValidMenuExist(String category) {
+    private void isValidMenuExist(String category) {
         if (!menus.containsKey(category)) {
             throw new IllegalArgumentException(INVALID_ORDER.getMessage());
         }
