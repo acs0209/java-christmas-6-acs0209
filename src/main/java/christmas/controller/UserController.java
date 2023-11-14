@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import static christmas.view.constant.InputConstant.GET_MENU;
+import static christmas.view.constant.InputConstant.DECEMBER_EVENT_PLANNER;
 import static christmas.view.constant.InputConstant.GET_VISIT_DATE;
 
 import christmas.domain.model.Menus;
@@ -26,6 +27,7 @@ public class UserController {
     }
 
     public String readDate() {
+        OutputView.printMessage(DECEMBER_EVENT_PLANNER.getMessage());
         OutputView.printMessage(GET_VISIT_DATE.getMessage());
         return inputView.readDate();
     }

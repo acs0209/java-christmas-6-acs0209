@@ -24,6 +24,12 @@ public class OutputView {
         System.out.println(message);
     }
 
+    private void printNoEventMessage(String eventName, String eventResult) {
+        System.out.println(eventName);
+        System.out.println(eventResult);
+        System.out.println();
+    }
+
     public void printOrderMenu(User user) {
         StringBuilder orderMenuResult = new StringBuilder();
         createOrderMenuResult(orderMenuResult, user);
@@ -54,19 +60,17 @@ public class OutputView {
     }
 
     public void printNoEventResult(int originalOrderAmount) {
-        StringBuilder noEventResult = new StringBuilder();
         DecimalFormat seperatedFormat = SEPARATOR_FORMAT.getFormat();
         String decimalTypeFormattedOrderAmount = seperatedFormat.format(originalOrderAmount);
-        createNoEventResult(noEventResult, decimalTypeFormattedOrderAmount);
-        System.out.println(noEventResult);
+        createNoEventResult(decimalTypeFormattedOrderAmount);
     }
 
-    private void createNoEventResult(StringBuilder noEventResult, String decimalTypeFormattedOrderAmount) {
-        noEventResult.append(GIFT_MENU.getMessage()).append(NEW_LINE.getMessage()).append(NEW_LINE.getMessage())
-                .append(BENEFIT_DETAILS.getMessage()).append(NEW_LINE.getMessage()).append(NEW_LINE.getMessage())
-                .append(TOTAL_BENEFIT_AMOUNT.getMessage()).append(NEW_LINE.getMessage()).append(NEW_LINE.getMessage())
-                .append(String.format(EXPECTED_PAYMENT_AFTER_DISCOUNT.getMessage(), decimalTypeFormattedOrderAmount))
-                .append(NEW_LINE.getMessage()).append(NEW_LINE.getMessage())
-                .append(DECEMBER_EVENT_BADGE.getMessage());
+    private void createNoEventResult(String decimalTypeFormattedOrderAmount) {
+        printNoEventMessage(GIFT_MENU.getEventName(), GIFT_MENU.getEventResult());
+        printNoEventMessage(BENEFIT_DETAILS.getEventName(), BENEFIT_DETAILS.getEventResult());
+        printNoEventMessage(TOTAL_BENEFIT_AMOUNT.getEventName(), TOTAL_BENEFIT_AMOUNT.getEventResult());
+        printNoEventMessage(EXPECTED_PAYMENT_AFTER_DISCOUNT.getEventName(),
+                String.format(EXPECTED_PAYMENT_AFTER_DISCOUNT.getEventResult(), decimalTypeFormattedOrderAmount));
+        printNoEventMessage(DECEMBER_EVENT_BADGE.getEventName(), DECEMBER_EVENT_BADGE.getEventResult());
     }
 }
