@@ -26,7 +26,7 @@ class OrderMenuInputValidatorTest {
                 "티본스테이크-e,바비큐립-1", "초코케이크-2,제로콜라-오",
                 "티본스테이크-1,바비큐립-1,초코케이크-2,-1", "티본스테이크-1,제로콜라!@#$%^&*-1",
                 "초코케이크-two,제로콜라-1", "2-초코케이크,1-제로콜라,티본스테이크-1",
-                "초코케이크-,-,-1"})
+                "초코케이크-,-,-1","asdf" ,"1231", "초코케이크,1-티본스테이크,3"})
         @DisplayName("메뉴 형식이 예시와 다른 경우 예외가 발생해야 하는 테스트")
         void testInvalidMenuFormatShouldThrowException(String input) {
             OrderMenuInputValidator inputValidation = new OrderMenuInputValidator();

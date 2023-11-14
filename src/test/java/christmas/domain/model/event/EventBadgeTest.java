@@ -6,52 +6,39 @@ import christmas.domain.dto.EventPlanDto;
 import christmas.domain.model.Menus;
 import christmas.domain.model.OriginalOrderAmount;
 import christmas.domain.model.User;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class EventBadgeTest {
 
-    @Nested
-    @DisplayName("이벤트 배지 생성 기능 테스트")
-    class TestCreationEventBadge {
+    private Menus menus;
 
-        private final Menus menus = Menus.init();
+    @BeforeEach
+    void initMenus() {
+        menus = Menus.init();
+    }
 
-        private void testCreationEventBadge(String visitDate, String menu, String expectedEventBadge) {
-            User user = User.create(visitDate, menu);
-            OriginalOrderAmount originalOrderAmount = OriginalOrderAmount.create(menus, user);
-            EventPlanDto eventPlanDto = EventPlanDto.create(menus, user);
-            BenefitDetails benefitDetails = BenefitDetails.create();
-            benefitDetails.createEventPlan(originalOrderAmount, eventPlanDto);
+    @ParameterizedTest(name = "생성한 이벤트 베지값이 기대값인 expectedEventBadge 와 같은지 테스트")
+    @CsvSource({
+            "25, '티본스테이크-1,초코케이크-3,아이스크림-5,제로콜라-1', 산타",
+            "31, '해산물파스타-1,초코케이크-1,아이스크림-10', 산타",
+            "15, '크리스마스파스타-4,아이스크림-1,제로콜라-1', 트리",
+            "27, '아이스크림-5,초코케이크-2,제로콜라-1', 트리",
+            "28, '해산물파스타-1,초코케이크-2,아이스크림-2', 별",
+            "29, '크리스마스파스타-3,아이스크림-2', 별",
+            "11, '티본스테이크-1,제로콜라-2,타파스-2', 없음",
+            "29, '양송이수프-3,초코케이크-2,아이스크림-2', 없음"
+    })
+    void testCreationEventBadge(String visitDate, String menu, String expectedEventBadge) {
+        User user = User.create(visitDate, menu);
+        OriginalOrderAmount originalOrderAmount = OriginalOrderAmount.create(menus, user);
+        EventPlanDto eventPlanDto = EventPlanDto.create(menus, user);
+        BenefitDetails benefitDetails = BenefitDetails.create();
+        benefitDetails.createEventPlan(originalOrderAmount, eventPlanDto);
 
-            EventBadge eventBadge = EventBadge.create(benefitDetails);
+        EventBadge eventBadge = EventBadge.create(benefitDetails);
 
-            assertThat(eventBadge.getEventBadge()).isEqualTo(expectedEventBadge);
-        }
-
-        @Test
-        @DisplayName("생성한 이벤트 베지값이 기대값인 산타와 같은지 테스트")
-        void testEventVeggieValueIsExpectedSanta() {
-            testCreationEventBadge("25", "티본스테이크-1,초코케이크-3,아이스크림-5,제로콜라-1", "산타");
-        }
-
-        @Test
-        @DisplayName("생성한 이벤트 베지값이 기대값인 트리와 같은지 테스트")
-        void testEventVeggieValueIsExpectedTree() {
-            testCreationEventBadge("27", "아이스크림-5,초코케이크-2,제로콜라-1", "트리");
-        }
-
-        @Test
-        @DisplayName("생성한 이벤트 베지값이 기대값인 별과 같은지 테스트")
-        void testEventVeggieValueIsExpectedStar() {
-            testCreationEventBadge("28", "해산물파스타-1,초코케이크-2,아이스크림-2", "별");
-        }
-
-        @Test
-        @DisplayName("생성한 이벤트 베지값이 기대값인 없음과 같은지 테스트")
-        void testEventVeggieValueIsExpectedNone() {
-            testCreationEventBadge("29", "양송이수프-3,초코케이크-2,아이스크림-2", "없음");
-        }
+        assertThat(eventBadge.getEventBadge()).isEqualTo(expectedEventBadge);
     }
 }
