@@ -9,6 +9,7 @@ import christmas.view.OutputView;
 
 public class EventPlannerController {
 
+    private static final int EVENT_AMOUNT = 10000;
     private final MenuController menuController;
     private final UserController userController;
     private final OriginalOrderController originalOrderController;
@@ -44,7 +45,7 @@ public class EventPlannerController {
     }
 
     private void isEventApplicableAmount(OriginalOrderAmount originalOrderAmount, EventPlanDto eventPlanDto) {
-        if (originalOrderAmount.getOrderAmount() < 10000) {
+        if (originalOrderAmount.getOrderAmount() < EVENT_AMOUNT) {
             outputView.printNoEventResult(originalOrderAmount.getOrderAmount());
             return;
         }

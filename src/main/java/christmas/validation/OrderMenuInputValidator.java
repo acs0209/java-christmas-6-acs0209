@@ -3,6 +3,8 @@ package christmas.validation;
 import static christmas.validation.constant.OrderMenuInputConstant.DELIMITER;
 import static christmas.validation.constant.OrderMenuInputConstant.INVALID_ORDER;
 import static christmas.validation.constant.OrderMenuInputConstant.INVALID_TOTAL_QUANTITY;
+import static christmas.validation.constant.OrderMenuInputConstant.MAX_MENU_COUNT;
+import static christmas.validation.constant.OrderMenuInputConstant.MIN_MENU_COUNT;
 import static christmas.validation.constant.OrderMenuInputConstant.ONLY_BEVERAGE_ORDER;
 
 import christmas.util.Parser;
@@ -46,7 +48,7 @@ public class OrderMenuInputValidator {
 
     private void isValidQuantity(String quantity) {
         int menuQuantity = Integer.parseInt(quantity);
-        if (menuQuantity < 1) {
+        if (menuQuantity < MIN_MENU_COUNT.getNumber()) {
             throw new IllegalArgumentException(INVALID_ORDER.getMessage());
         }
     }
@@ -63,7 +65,7 @@ public class OrderMenuInputValidator {
     }
 
     private void isValidTotalMenuQuantity(int totalQuantity) {
-        if (totalQuantity > 20) {
+        if (totalQuantity > MAX_MENU_COUNT.getNumber()) {
             throw new IllegalArgumentException(INVALID_TOTAL_QUANTITY.getMessage());
         }
     }

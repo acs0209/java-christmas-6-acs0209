@@ -49,7 +49,7 @@ public class EventOutputView {
 
         printBenefitDetails.entrySet()
                 .stream()
-                .filter(benefitDetail -> benefitDetail.getValue() != 0)
+                .filter(benefitDetail -> benefitDetail.getValue() != NO_EVENT.getNumber())
                 .forEach(benefitDetail -> benefitDetailsResult.append(benefitDetail.getKey())
                         .append(COLON.getMessage())
                         .append(DASH.getMessage())
@@ -59,7 +59,7 @@ public class EventOutputView {
     }
 
     private boolean hasNoEvents(int totalBenefitAmount) {
-        return totalBenefitAmount == 0;
+        return totalBenefitAmount == NO_EVENT.getNumber();
     }
 
     public void printTotalBenefitAmount(int totalBenefitAmount) {
@@ -69,13 +69,13 @@ public class EventOutputView {
     }
 
     private void createTotalBenefitAmountResult(StringBuilder totalBenefitAmountResult, int totalBenefitAmount) {
-        DecimalFormat seperatedFormat = SEPARATOR_FORMAT.getFormat();
-        if (totalBenefitAmount == 0) {
-            totalBenefitAmountResult.append(seperatedFormat.format(totalBenefitAmount)).append(WON.getMessage())
+        if (totalBenefitAmount == NO_EVENT.getNumber()) {
+            totalBenefitAmountResult.append(totalBenefitAmount).append(WON.getMessage())
                     .append(NEW_LINE.getMessage());
             return;
         }
 
+        DecimalFormat seperatedFormat = SEPARATOR_FORMAT.getFormat();
         totalBenefitAmountResult.append(DASH.getMessage())
                 .append(seperatedFormat.format(totalBenefitAmount))
                 .append(WON.getMessage())

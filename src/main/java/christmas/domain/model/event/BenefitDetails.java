@@ -32,12 +32,13 @@ import java.util.Map;
 
 public class BenefitDetails {
 
+    private static final int INITIAL_TOTAL_BENEFIT_AMOUNT = 0;
     private final Map<String, Integer> benefitDetails = new HashMap<>();
     private int totalBenefitAmount;
 
     private BenefitDetails() {
         initBenefitDetails();
-        totalBenefitAmount = 0;
+        totalBenefitAmount = INITIAL_TOTAL_BENEFIT_AMOUNT;
     }
 
     public static BenefitDetails create() {
