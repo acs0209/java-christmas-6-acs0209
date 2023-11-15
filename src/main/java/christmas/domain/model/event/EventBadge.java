@@ -19,13 +19,13 @@ public class EventBadge {
 
     private String createEventBadge(BenefitDetails benefitDetails) {
         int totalBenefitAmount = benefitDetails.getTotalBenefitAmount();
-        if (totalBenefitAmount > SANTA.getNumber()) {
+        if (totalBenefitAmount >= SANTA.getNumber()) {
             return SANTA.getMessage();
         }
-        if (totalBenefitAmount > TREE.getNumber()) {
+        if (totalBenefitAmount >= TREE.getNumber()) {
             return TREE.getMessage();
         }
-        if (totalBenefitAmount > STAR.getNumber()) {
+        if (totalBenefitAmount >= STAR.getNumber()) {
             return STAR.getMessage();
         }
         return NO_EVENT_BADGE.getMessage();
