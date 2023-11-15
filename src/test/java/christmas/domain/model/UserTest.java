@@ -20,7 +20,7 @@ class UserTest {
                 () -> assertThat(user.getOrderMenu().get("해산물파스타")).isEqualTo(2),
                 () -> assertThat(user.getOrderMenu().get("레드와인")).isEqualTo(1),
                 () -> assertThat(user.getOrderMenu().get("초코케이크")).isEqualTo(1),
-                () -> assertThat(user.getVisitDate().getDate()).isEqualTo(7)
+                () -> assertThat(user.getVisitDate()).isEqualTo(7)
         );
     }
 }

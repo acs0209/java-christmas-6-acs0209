@@ -58,7 +58,7 @@ public class BenefitDetails {
     }
 
     private void updateChristmasDiscount(User user) {
-        int visitDate = user.getVisitDate().getDate();
+        int visitDate = user.getVisitDate();
         if (isChristmasEventDay(visitDate)) {
             int benefit = createChristmasDiscount(visitDate);
             benefitDetails.put(CHRISTMAS_DISCOUNT.getMessage(), benefit);
@@ -74,7 +74,7 @@ public class BenefitDetails {
     }
 
     private void updateWeekdayDiscount(EventPlanDto eventPlanDto) {
-        int visitDate = eventPlanDto.getUser().getVisitDate().getDate();
+        int visitDate = eventPlanDto.getUser().getVisitDate();
         if (isWeekday(visitDate)) {
             int weekdayDiscount = createWeekdayDiscount(eventPlanDto);
             benefitDetails.put(WEEKDAY_DISCOUNT.getMessage(), weekdayDiscount);
@@ -98,7 +98,7 @@ public class BenefitDetails {
     }
 
     private void updateWeekendDiscount(EventPlanDto eventPlanDto) {
-        int visitDate = eventPlanDto.getUser().getVisitDate().getDate();
+        int visitDate = eventPlanDto.getUser().getVisitDate();
         if (isWeekend(visitDate)) {
             int weekendDiscount = createWeekendDiscount(eventPlanDto);
             benefitDetails.put(WEEKEND_DISCOUNT.getMessage(), weekendDiscount);
@@ -122,7 +122,7 @@ public class BenefitDetails {
     }
 
     private void updateSpecialDiscount(User user) {
-        int visitDate = user.getVisitDate().getDate();
+        int visitDate = user.getVisitDate();
         if (isSpecialDay(visitDate)) {
             benefitDetails.put(SPECIAL_DISCOUNT.getMessage(), SPECIAL_DISCOUNT_AMOUNT.getNumber());
         }

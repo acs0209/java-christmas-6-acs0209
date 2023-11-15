@@ -2,7 +2,6 @@ package christmas.domain.model;
 
 import static christmas.util.Parser.HYPHEN_DELIMITER;
 
-import christmas.domain.wrapper.VisitDate;
 import christmas.util.Parser;
 import java.util.HashMap;
 import java.util.List;
@@ -11,10 +10,10 @@ import java.util.Map;
 public class User {
 
     private final Map<String, Integer> orderMenu = new HashMap<>();
-    private final VisitDate visitDate;
+    private final int visitDate;
 
     private User(String date, String menu) {
-        visitDate = VisitDate.create(Integer.parseInt(date));
+        visitDate = Integer.parseInt(date);
         createOrderMenu(menu);
     }
 
@@ -33,7 +32,7 @@ public class User {
         return orderMenu;
     }
 
-    public VisitDate getVisitDate() {
+    public int getVisitDate() {
         return visitDate;
     }
 }
