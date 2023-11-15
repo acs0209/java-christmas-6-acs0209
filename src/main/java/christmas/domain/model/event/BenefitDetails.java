@@ -133,7 +133,7 @@ public class BenefitDetails {
     }
 
     private void updateGiftEvent(OriginalOrderAmount originalOrderAmount) {
-        if (originalOrderAmount.getOrderAmount() > GIFT_EVENT_CHECK.getNumber()) {
+        if (originalOrderAmount.getOrderAmount() >= GIFT_EVENT_CHECK.getNumber()) {
             benefitDetails.put(GIFT_EVENT.getMessage(), GIFT_EVENT_AMOUNT.getNumber());
         }
     }
