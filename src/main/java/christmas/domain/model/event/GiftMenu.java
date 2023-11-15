@@ -6,21 +6,22 @@ import static christmas.domain.constant.event.GiftMenuConstant.NO_GIFT;
 
 public class GiftMenu {
 
-    private String giftMenu;
+    private final String giftMenu;
 
     private GiftMenu(int originalOrderAmount) {
+        if (isGiftMenuAvailable(originalOrderAmount)) {
+            giftMenu = CHAMPAGNE_GIFT.getMessage();
+            return;
+        }
         giftMenu = NO_GIFT.getMessage();
-        isGiftMenuAvailable(originalOrderAmount);
     }
 
     public static GiftMenu create(int originalOrderAmount) {
         return new GiftMenu(originalOrderAmount);
     }
 
-    private void isGiftMenuAvailable(int originalOrderAmount) {
-        if (originalOrderAmount >= GIFT_MENU_REQUIREMENT_AMOUNT.getNumber()) {
-            giftMenu = CHAMPAGNE_GIFT.getMessage();
-        }
+    private boolean isGiftMenuAvailable(int originalOrderAmount) {
+        return originalOrderAmount >= GIFT_MENU_REQUIREMENT_AMOUNT.getNumber();
     }
 
     public String getGiftMenu() {
